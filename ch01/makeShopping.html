@@ -1,0 +1,25 @@
+<html>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.3/vue.js"></script>
+    <head></head>
+    <body>
+        <div id="app" class="container">
+            <h2>{{title}}</h2>
+            <ul>
+                <li>{{ item[0] }}</li>
+                <li>{{ item[1] }}</li>
+            </ul>
+        </div>        
+    </body>
+</html>
+
+<script>
+    var data = {
+        items : ['Bannas' , 'Apples'] ,
+        title : 'My Shopping List'
+    };
+
+    new Vue({
+        el : '#app',
+        data : data
+    });
+</script>
