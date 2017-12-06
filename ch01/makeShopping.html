@@ -5,21 +5,55 @@
 
         <div id="app" class="container">
             <h2>{{ title }}</h2>
+            <div class="input-group">
+                <input v-model="newItem" v-on:keyup.enter="addItem"
+                placeholder="add Shopping list item" type="text" class="form-control">
+            </div>
+
+            <span class="input-group-btn">
+                <button v-on:click="addItem" class="btn btn-default" type="button">
+                    Add!
+                </button>
+            </span>
+
             <ul>
-                <li>{{ items[0] }}</li>
-                <li>{{ items[1] }}</li>
+                <li v-for="item in items">{{ item }}</li>
+                <!-- <li>{{ items[0] }}</li>
+                <li>{{ items[1] }}</li> -->
             </ul>
         </div>        
+
+        <div id="footer">
+            <hr/>
+            <em>Change the title of your shopping list here</em>
+            <input v-model="title" />
+        </div>
     </body>
 </html>
 
 <script>
     var data = {
-        items : ['Bannas' , 'Apples'] ,
-        title : 'My Shopping List'
+        items : [ { title : 'Bannas' , checked : true }
+                , { title : 'Apples' , checked : false }
+                , { title : 'FineApples', checked : true } ] ,
+        title : 'My Shopping List',
+        newItem : ''
     };
     new Vue({
         el : '#app',
-        data : data
+        data : data,
+        method : {
+            addItem : function() {
+                var text; 
+                text = this.newItem.trim();
+                if(text) {
+                    this.items.push({
+                        text : text, 
+                        checked : false 
+                    });
+                    this.newItem = '';
+                }
+            }
+        }
     });
 </script>
