@@ -17,32 +17,44 @@
             </span>
 
             <ul>
-                <li v-for="item in items">{{ item }}</li>
+                <li v-for="item in items" :class="{ 'removed' : item.checked }">
                 <!-- <li>{{ items[0] }}</li>
                 <li>{{ items[1] }}</li> -->
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" v-model="item.checked"> {{item.text}}
+                    </label>
+                </div>
+                </li>
             </ul>
+            <div id="footer">
+                <hr/>
+                <em>Change the title of your shopping list here</em>
+                <input v-model="title" />
+            </div>
         </div>        
 
-        <div id="footer">
-            <hr/>
-            <em>Change the title of your shopping list here</em>
-            <input v-model="title" />
+        <div id="pronouns">
+            <p><strong>Check Yourserlf :)</strong></p>
+            <textarea class="textarea" v-model="text" v-on:keyup="checkText">
+                {{text}}
+            </textarea>
         </div>
     </body>
 </html>
 
 <script>
     var data = {
-        items : [ { title : 'Bannas' , checked : true }
-                , { title : 'Apples' , checked : false }
-                , { title : 'FineApples', checked : true } ] ,
+        items : [ { text : 'Bannas' , checked : true }
+                , { text : 'Apples' , checked : false }
+                , { text : 'FineApples', checked : true } ] ,
         title : 'My Shopping List',
         newItem : ''
     };
     new Vue({
         el : '#app',
         data : data,
-        method : {
+        methods : {
             addItem : function() {
                 var text; 
                 text = this.newItem.trim();
