@@ -2,7 +2,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.3/vue.js"></script>
     <head></head>
     <body>
-
         <div id="app" class="container">
             <h2>{{ title }}</h2>
             <ul>
@@ -15,11 +14,23 @@
 
 <script>
     var data = {
-        items : ['Bannas' , 'Apples'] ,
-        title : 'My Shopping List'
+        items : ['Bannas' 
+                , 'Apples'] ,
+        title : 'My Shopping List',
+        newItem : ''
     };
+    /***
+    컴포넌트 선언 
+    */
+    var ItemComponent : Vue.extends({
+
+    });
+
     new Vue({
         el : '#app',
-        data : data
+        data : data,
+        methods : {
+
+        }
     });
 </script>
