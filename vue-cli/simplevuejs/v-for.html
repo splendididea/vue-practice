@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<div id="exampleFor">
+    <table>
+        <tr v-for="(user, index) in users" v-if="user.name.indexOf('미나') > -1 ">
+            <td>{{index+1}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.age}}</td>
+            <td>{{user.height}}</td>
+        </tr>
+    </table>
+</div>
+<br>
+<div id="exampleFor2">
+    <select id="regions">
+        <option v-for="(val ,key, index) in regions" v-bind:value="key">{{index}} {{val}}</option>
+    </select>
+</div>
+<div id="exampleFor3WithTamplate">
+    <table>
+        <tbody id="contents">
+            <template v-for="(user , index) in users">
+                <tr>
+                    <td>
+                        {{user.name}}
+                    </td>
+                    <td>
+                        {{user.age}}
+                    </td>
+                    <td>
+                        {{user.height}}
+                    </td>
+                </tr>
+                <tr class="divider" v-if="index % 5 === 4">
+                    <td colspan="3"></td>
+                </tr>
+            </template>
+        </tbody>
+    </table>
+</div>
+
+<body>
+
+</body>
+<script>
+    var dummyDatas = {
+        users: [{
+            name: '쯔위',
+            age: 20,
+            height: 170
+        }, {
+            name: '미나',
+            age: 21,
+            height: 168
+        }, {
+            name: '채영',
+            age: 20,
+            height: 158
+        }]
+    }
+    var regions = {
+        "A": "asia",
+        "B": "europe",
+        "C": "america"
+    }
+    var simple = new Vue({
+        el: '#exampleFor',
+        data: dummyDatas
+    })
+    var simple2 = new Vue({
+        el: "#exampleFor2",
+        data: {
+            regions: regions
+        }
+    })
+    var simple3 = new Vue({
+        el: '#exampleFor3WithTamplate',
+        data: dummyDatas
+    })
+</script>
+
+</html>
