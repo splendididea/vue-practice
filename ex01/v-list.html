@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+    <title>
+        V-for        
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <ul id="example1">
+        <li v-for="item in items">
+            {{ item.message }}
+        </li>
+    </ul>
+
+    <ul id="example2">
+        <li v-for="(item, index) in items">
+            {{ parentMessage }} - {{ index }} - {{item.message}}
+        </li>
+    </ul>
+
+    <ul id="v-for-object" class=demo>
+        <li v-for="value in object">
+            {{value}}
+        </li>
+    </ul>
+
+    <ul id="value-index-key">
+        <li v-for="(value, index, key) in items">
+
+        </li>
+    </ul>
+</body>
+<script type="text/javascript">
+var example1 = new Vue({
+    el : "#example1",
+    data : {
+        items : [
+            {message : 'Foo'},
+            {message : 'Bar'}
+        ]
+    }
+});
+var example2 = new Vue({
+    el : "#example2",
+    data : {
+        parentMessage : "Parent" ,
+        items : [
+            { message : 'Foo' } ,
+            { message : 'Tiger' }
+        ]
+    }
+});
+
+var example3 = new Vue({
+    el : "#v-for-object",
+    data : {
+        object : {
+            firstName : 'Lee',
+            lastName : 'JY',
+            age : 33
+        }
+    }
+})
+
+var example4 = new Vue({
+    el : '#value-index-key',
+    data : {
+        items : [
+            { }
+        ]
+    }
+})
+</script>
+</html>
